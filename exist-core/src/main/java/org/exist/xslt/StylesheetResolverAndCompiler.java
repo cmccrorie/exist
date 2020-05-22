@@ -55,6 +55,7 @@ import org.exist.util.EXistURISchemeURIResolver;
 import org.exist.xmldb.XmldbURI;
 import org.exist.xquery.Constants;
 import org.xml.sax.SAXException;
+import org.xml.sax.ext.LexicalHandler;
 
 import static org.exist.xslt.XsltURIResolverHelper.getXsltURIResolver;
 
@@ -157,7 +158,7 @@ public class StylesheetResolverAndCompiler implements Stylesheet {
 
     final Serializer serializer = broker.newSerializer();
     serializer.reset();
-    serializer.setSAXHandlers(handler, null);
+    serializer.setSAXHandlers(handler, handler instanceof LexicalHandler ? (LexicalHandler)handler : null);
     serializer.toSAX(stylesheet);
 
     final Templates t = handler.getTemplates();
