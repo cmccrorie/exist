@@ -1,4 +1,13 @@
 /*
+ * Copyright (C) 2014 Evolved Binary Ltd
+ *
+ * Changes made by Evolved Binary are proprietary and are not Open Source.
+ *
+ * NOTE: Parts of this file contain code from The eXist-db Authors.
+ *       The original license header is included below.
+ *
+ * ----------------------------------------------------------------------------
+ *
  * eXist Open Source Native XML Database
  * Copyright (C) 2001-2019 The eXist Project
  * http://exist-db.org
@@ -94,8 +103,6 @@ public class EXistDbXMLReader implements XMLReader, Locator {
             serializer.reset();
             serializer.setSAXHandlers(this.contentHandler, null);
             serializer.toSAX(source.getDocument());
-    
-            this.contentHandler.endDocument();
         }
         catch (SAXParseException e) {
             LOG.error("SaxParseException: {}", e);
